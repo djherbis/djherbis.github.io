@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Buffer on djherbis </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://localhost:1313/tags/buffer/</link>
+    <language>en-us</language>
+    
+    
+    <updated>Sat, 25 Jul 2015 12:57:49 PDT</updated>
+    
+    <item>
+      <title>What Buffering Strategy is right for me?</title>
+      <link>http://localhost:1313/post/buffer/</link>
+      <pubDate>Sat, 25 Jul 2015 12:57:49 PDT</pubDate>
+      
+      <guid>http://localhost:1313/post/buffer/</guid>
+      <description>Buffering is useful for a lot of projects, however every task has different requirements and therefore deserves it&amp;rsquo;s own buffering strategy. Buffering in its simplest form is easy, store some bytes which will be read later. It gets harder when you start adding limited resources and other contraints to the problem. Buffering can be divided into two categories: Bounded &amp;amp; Unbounded. Bounded Buffering Bounded buffers are much safer since you can control how much of your resources they take up, however you need to decide what happens to your dataflows when they do.</description>
+    </item>
+    
+  </channel>
+</rss>
+

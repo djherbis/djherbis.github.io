@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>What Buffering Strategy is right for me? - djherbis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="http://localhost:1313/post/buffer/">
+
+  
+  
+
+  
+  
+
+  
+  
+
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313//css/combined-min.css">
+
+</head>
+<body class="">
+
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://localhost:1313/" class="site-title">djherbis</a>
+      <nav class="site-nav right">
+      <a href="http://localhost:1313/about/">About</a>
+<a href="http://localhost:1313/tags">Tags</a>
+<a href="http://localhost:1313/contact/">Contact</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">What Buffering Strategy is right for me?</h1>
+        <span class="post-meta">Jul 25, 2015 by djherbis</span><br>
+        
+      </div>
+
+      <article class="post-content">
+      
+
+<p>Buffering is useful for a lot of projects, however every task has different requirements and therefore deserves it&rsquo;s own buffering strategy.</p>
+
+<p>Buffering in its simplest form is easy, store some bytes which will be read later. It gets harder when you start adding limited resources and other contraints to the problem.</p>
+
+<p>Buffering can be divided into two categories: Bounded &amp; Unbounded.</p>
+
+<h2 id="bounded-buffering:6f2d919846b8f26e0452180dbb27ffcc">Bounded Buffering</h2>
+
+<p>Bounded buffers are much safer since you can control how much of your resources they take up, however you need to decide what happens to your dataflows when they do.</p>
+
+<h3 id="blocking-buffers:6f2d919846b8f26e0452180dbb27ffcc">Blocking Buffers</h3>
+
+<p>The simplest answer here is: block until there&rsquo;s room. In this case you are guarenteed not to lose data, however Write&rsquo;s to the buffer will block until some data is Read.</p>
+
+<p>However there are cases where blocking isn&rsquo;t what you want. Sometimes losing data is better than clogging the pipe.</p>
+
+<h3 id="non-blocking-buffers:6f2d919846b8f26e0452180dbb27ffcc">Non-Blocking Buffers</h3>
+
+<p>Overflow: data coming in is thrown away when the buffer is full.
+Ring: the oldest data in the buffer is thrown away to make room for newer data.</p>
+
+<h2 id="unbounded-buffering:6f2d919846b8f26e0452180dbb27ffcc">Unbounded Buffering</h2>
+
+<p>Unbounded buffers are almost never a good idea, because in reality we never have unlimited resources on which to store them. However I didn&rsquo;t want to preclude users from being able to shoot themselves in the foot if their boss asks them too so I&rsquo;ve included ways to create buffers which can grow forever.</p>
+
+      </article>
+
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="http://localhost:1313//tags/golang">golang</a>
+        
+            ,&nbsp;
+            <a href="http://localhost:1313//tags/buffer">buffer</a>
+        
+      </p>
+
+      
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="http://localhost:1313/index.xml"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="http://localhost:1313/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+

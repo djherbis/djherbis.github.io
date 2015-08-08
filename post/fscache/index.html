@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>#golang stream caching - djherbis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <link rel="canonical" href="https://djherbis.github.io:1313/post/fscache/">
+
+  
+  
+
+  
+  
+
+  
+  
+
+  <link rel="stylesheet" type="text/css" href="https://djherbis.github.io:1313//css/combined-min.css">
+
+</head>
+<body class="">
+
+<div class="site-wrap">
+  <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="https://djherbis.github.io:1313/" class="site-title">djherbis</a>
+      <nav class="site-nav right">
+      <a href="https://djherbis.github.io:1313/about/">About</a>
+<a href="https://djherbis.github.io:1313/tags">Tags</a>
+<a href="https://djherbis.github.io:1313/contact/">Contact</a>
+
+</form>
+
+      </nav>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</header>
+
+  <div class="post p2 p-responsive wrap" role="main">
+    <div class="measure">
+      <div class="post-header mb2">
+        <h1 class="py2">#golang stream caching</h1>
+        <span class="post-meta">Mar 28, 2015 by djherbis</span><br>
+        
+      </div>
+
+      <article class="post-content">
+      
+
+<h2 id="djherbis-fscache-https-github-com-djherbis-fscache:4710f0f86f5f1a8464e4aae6df8d7b79"><a href="https://github.com/djherbis/fscache">djherbis/fscache</a></h2>
+
+<p><a href="https://godoc.org/github.com/djherbis/fscache"><img src="https://godoc.org/github.com/djherbis/fscache?status.svg" alt="GoDoc" />
+</a>
+<a href="https://github.com/djherbis/fscache/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="Software License" />
+</a>
+<a href="https://travis-ci.org/djherbis/fscache"><img src="https://travis-ci.org/djherbis/fscache.svg?branch=master" alt="Build Status" />
+</a>
+<a href="https://coveralls.io/r/djherbis/fscache?branch=master"><img src="https://coveralls.io/repos/djherbis/fscache/badge.svg?branch=master" alt="Coverage Status" />
+</a></p>
+
+<h2 id="objective:4710f0f86f5f1a8464e4aae6df8d7b79">Objective</h2>
+
+<ul>
+<li>Our Web server needs to perform an &ldquo;expensive&rdquo; process to create downloads.</li>
+<li>We want to cache these files so they don&rsquo;t have to be generated on every request.</li>
+<li>If two or more concurrent clients ask for the same file, don&rsquo;t generate it twice.</li>
+</ul>
+
+<p>A naive cache design might look like this:</p>
+
+<p><style type="text/css">
+div.file-data table {
+  width: 100%;
+}
+</style>
+<script src=https://gist.github.com/djherbis/450ac4dfd1c062593d25.js></script></p>
+
+<p>Well the above code is pretty bad.
+We&rsquo;re blocking all requests while the cache is being written to.</p>
+
+<p>But we need the lock since if we have a cache miss we&rsquo;ll need to write it.
+If we only lock while checking the map and then again when inserting into the map
+there&rsquo;s the potential for multiple clients to do expensiveProcessReader().</p>
+
+<p>So we&rsquo;ll need to add another requirement:</p>
+
+<ul>
+<li>Don&rsquo;t block clients while writing to the cache</li>
+</ul>
+
+<p>But this raises a another problem, we need to be able to read and write concurrently.</p>
+
+<h2 id="solved-by-djherbis-fscache:4710f0f86f5f1a8464e4aae6df8d7b79">Solved by djherbis/fscache.</h2>
+
+<ul>
+<li>you can read from and write to a stream concurrently</li>
+<li>multiple readers are allowed (even while writing)</li>
+<li>all readers get a complete copy of the stream</li>
+<li>each reader can read independently of other readers</li>
+<li>readers only return io.EOF once the writer is closed.</li>
+<li>readers block if they catch up to the writer, and only read when data is available</li>
+</ul>
+
+<p>Our problem becomes incredibly easy with the help of fscache:</p>
+
+<p><style type="text/css">
+div.file-data table {
+  width: 100%;
+}
+</style>
+<script src=https://gist.github.com/djherbis/be170c3f3a5e489ce216.js></script></p>
+
+<h2 id="how-does-it-work:4710f0f86f5f1a8464e4aae6df8d7b79">How does it work?</h2>
+
+<p>fscache only locks briefly, and creating a new cache entry is always fast.</p>
+
+<p>A new cache entry just contains an empty &ldquo;File&rdquo; which can be read/written from concurrently.</p>
+
+<p>Normally, if a reader and a writer both have access to a stream, the reader returns io.EOF when it catches up.</p>
+
+<p>To get around this we borrow some ideas from io.Pipe(). If the readers catch up to the writer, they block until they are signaled by a new Write() or Close() action by the writer. Therefore the readers sit patiently until data is available, and don&rsquo;t return io.EOF until the writer closes.</p>
+
+      </article>
+
+      <p class="post-meta">Tags:&nbsp;
+        
+            
+            <a href="https://djherbis.github.io:1313//tags/golang">golang</a>
+        
+            ,&nbsp;
+            <a href="https://djherbis.github.io:1313//tags/stream">stream</a>
+        
+            ,&nbsp;
+            <a href="https://djherbis.github.io:1313//tags/cache">cache</a>
+        
+      </p>
+
+      
+
+    </div>
+  </div>
+</div>
+    <footer class="footer">
+      <div class="p2 wrap">
+        <div class="measure mt1 center">
+      <nav class="social-icons icons">
+<a class="fa fa-rss rss" href="https://djherbis.github.io:1313/index.xml"></a>
+
+</nav>
+
+          <small>
+            Copyright &#169; 2015<br>
+            Powered by <a href="http://gohugo.io/" target="_blank">Hugo</a> &amp; <a href="https://github.com/azmelanar/hugo-theme-pixyll" target="_blank">Pixyll</a>
+          </small>
+        </div>
+      </div>
+    </footer>
+
+    
+    <script src="https://djherbis.github.io:1313/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+    
+
+
+<script data-no-instant>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+</html>
+
