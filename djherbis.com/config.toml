@@ -1,0 +1,14 @@
+languageCode = "en-us"
+contentdir = "content"
+publishdir = "public"
+builddrafts = false
+baseurl = "https://djherbis.com/"
+canonifyurls = true
+title = "djherbis"
+author = "admin"
+theme = "pixyll"
+
+
+[indexes]
+  category = "categories"
+  tag = "tags"
