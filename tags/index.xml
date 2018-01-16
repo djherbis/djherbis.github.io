@@ -1,13 +1,58 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Tags on My New Hugo Site </title>
+      <title>Tags on djherbis </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>http://replace-this-with-your-hugo-site.com/tags/</link>
+    <link>https://djherbis.com/tags/</link>
     <language>en-us</language>
     
     
-    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    <updated>Tue, 10 Mar 2015 21:55:40 -0400</updated>
+    
+    <item>
+      <title>Boltdb</title>
+      <link>https://djherbis.com/tags/boltdb/</link>
+      <pubDate>Tue, 10 Mar 2015 21:55:40 -0400</pubDate>
+      
+      <guid>https://djherbis.com/tags/boltdb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cache</title>
+      <link>https://djherbis.com/tags/cache/</link>
+      <pubDate>Sat, 28 Mar 2015 14:48:31 -0400</pubDate>
+      
+      <guid>https://djherbis.com/tags/cache/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://djherbis.com/tags/golang/</link>
+      <pubDate>Sat, 28 Mar 2015 14:48:31 -0400</pubDate>
+      
+      <guid>https://djherbis.com/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Persistence</title>
+      <link>https://djherbis.com/tags/persistence/</link>
+      <pubDate>Tue, 10 Mar 2015 21:55:40 -0400</pubDate>
+      
+      <guid>https://djherbis.com/tags/persistence/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream</title>
+      <link>https://djherbis.com/tags/stream/</link>
+      <pubDate>Sat, 28 Mar 2015 14:48:31 -0400</pubDate>
+      
+      <guid>https://djherbis.com/tags/stream/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

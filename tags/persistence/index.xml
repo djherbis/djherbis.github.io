@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>djherbis on djherbis </title>
+      <title>Persistence on djherbis </title>
       <generator uri="https://gohugo.io">Hugo</generator>
-    <link>https://djherbis.com/</link>
+    <link>https://djherbis.com/tags/persistence/</link>
     <language>en-us</language>
     
     
-    <updated>Sat, 28 Mar 2015 14:48:31 -0400</updated>
-    
-    <item>
-      <title>#golang stream caching</title>
-      <link>https://djherbis.com/post/fscache/</link>
-      <pubDate>Sat, 28 Mar 2015 14:48:31 -0400</pubDate>
-      
-      <guid>https://djherbis.com/post/fscache/</guid>
-      <description>djherbis/fscache      
-Objective  Our Web server needs to perform an “expensive” process to create downloads. We want to cache these files so they don’t have to be generated on every request. If two or more concurrent clients ask for the same file, don’t generate it twice.  A naive cache design might look like this: 
-Well the above code is pretty bad. We’re blocking all requests while the cache is being written to.</description>
-    </item>
+    <updated>Tue, 10 Mar 2015 21:55:40 -0400</updated>
     
     <item>
       <title>#golang persistence with boltdb and djherbis/stow</title>
