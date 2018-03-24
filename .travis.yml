@@ -4,7 +4,7 @@ go:
 env:
   global:
   - SSH_KEY="id_rsa"
-  - GIT_NAME="Dustin Herbison"
+  - GIT_NAME="Dustin H"
   - GIT_EMAIL="djherbis+travis@gmail.com"
   - SOURCE_DIR="djherbis.com/public"
   - DEPLOY_BRANCH="dev"
