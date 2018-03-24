@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Golang on djherbis </title>
-      <generator uri="https://gohugo.io">Hugo</generator>
+    <title>Golang on djherbis</title>
     <link>https://djherbis.com/tags/golang/</link>
+    <description>Recent content in Golang on djherbis</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 28 Mar 2015 14:48:31 -0400</lastBuildDate>
     
+	<atom:link href="https://djherbis.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
-    <updated>Sat, 28 Mar 2015 14:48:31 -0400</updated>
     
     <item>
       <title>#golang stream caching</title>
@@ -34,4 +36,3 @@ Stow can use any encoding for storing your data, which will be transparently enc
     
   </channel>
 </rss>
-

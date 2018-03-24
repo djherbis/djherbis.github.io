@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Cache on djherbis </title>
-      <generator uri="https://gohugo.io">Hugo</generator>
+    <title>Cache on djherbis</title>
     <link>https://djherbis.com/tags/cache/</link>
+    <description>Recent content in Cache on djherbis</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 28 Mar 2015 14:48:31 -0400</lastBuildDate>
     
+	<atom:link href="https://djherbis.com/tags/cache/index.xml" rel="self" type="application/rss+xml" />
     
-    <updated>Sat, 28 Mar 2015 14:48:31 -0400</updated>
     
     <item>
       <title>#golang stream caching</title>
@@ -22,4 +24,3 @@ Well the above code is pretty bad. We’re blocking all requests while the cache
     
   </channel>
 </rss>
-
