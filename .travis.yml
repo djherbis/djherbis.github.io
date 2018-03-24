@@ -1,28 +1,21 @@
 language: go
-
 go:
-    - "1.7.1"
-
+- 1.7.1
 env:
-    global:
-        - SSH_KEY="id_rsa"
-        - GIT_NAME="Dustin Herbison"
-        - GIT_EMAIL="djherbis+travis@gmail.com"
-        - SOURCE_DIR="public"
-        - DEPLOY_BRANCH="dev"
-
+  global:
+  - SSH_KEY="id_rsa"
+  - GIT_NAME="Dustin Herbison"
+  - GIT_EMAIL="djherbis+travis@gmail.com"
+  - SOURCE_DIR="public"
+  - DEPLOY_BRANCH="dev"
 before_install:
-- openssl aes-256-cbc -K $encrypted_2485d20c5760_key -iv $encrypted_2485d20c5760_iv -in travis_key.enc -out travis_key -d
-
+- openssl aes-256-cbc -K $encrypted_2485d20c5760_key -iv $encrypted_2485d20c5760_iv
+  -in travis_key.enc -out travis_key -d
 before_script:
-    - git clone --branch v2 https://github.com/go-yaml/yaml $GOPATH/src/gopkg.in/yaml.v2
-    - go get -u -v github.com/spf13/hugo
-
+- git clone --branch v2 https://github.com/go-yaml/yaml $GOPATH/src/gopkg.in/yaml.v2
+- go get -u -v github.com/spf13/hugo
 script:
-    - hugo
-
+- hugo
 after_success:
-    - echo "djherbis.com" > ./public/CNAME
-    - ./scripts/deploy.sh
-
-
+- echo "djherbis.com" > ./public/CNAME
+- "./scripts/deploy.sh"
