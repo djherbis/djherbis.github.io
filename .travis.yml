@@ -17,4 +17,5 @@ script:
 - hugo -s djherbis.com
 after_success:
 - echo "djherbis.com" > ./djherbis.com/public/CNAME
+- cp README.md ./djherbis.com/public/
 - ./deploy.sh
