@@ -3,7 +3,7 @@ go:
 - 1.10.x
 env:
   global:
-  - SSH_KEY="id_rsa"
+  - SSH_KEY="travis_key"
   - GIT_NAME="Dustin H"
   - GIT_EMAIL="djherbis+travis@gmail.com"
   - SOURCE_DIR="djherbis.com/public"
