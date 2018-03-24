@@ -16,5 +16,5 @@ before_script:
 script:
 - hugo -s djherbis.com
 after_success:
-- echo "djherbis.com" > ./public/CNAME
-- "deploy.sh"
+- echo "djherbis.com" > ./djherbis.com/public/CNAME
+- ./deploy.sh
