@@ -9,6 +9,8 @@ env:
   - SOURCE_DIR="public"
   - DEPLOY_BRANCH="dev"
 before_install:
+- openssl aes-256-cbc -K $encrypted_68c07d788b06_key -iv $encrypted_68c07d788b06_iv
+  -in travis_key.enc -out travis_key -d
 - openssl aes-256-cbc -K $encrypted_2485d20c5760_key -iv $encrypted_2485d20c5760_iv
   -in travis_key.enc -out travis_key -d
 before_script:
