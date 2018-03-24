@@ -6,7 +6,7 @@ env:
   - SSH_KEY="id_rsa"
   - GIT_NAME="Dustin Herbison"
   - GIT_EMAIL="djherbis+travis@gmail.com"
-  - SOURCE_DIR="public"
+  - SOURCE_DIR="djherbis.com/public"
   - DEPLOY_BRANCH="dev"
 before_install:
 - openssl aes-256-cbc -K $encrypted_68c07d788b06_key -iv $encrypted_68c07d788b06_iv
@@ -14,7 +14,7 @@ before_install:
 before_script:
 - go get -u -v github.com/spf13/hugo
 script:
-- hugo
+- hugo -s djherbis.com
 after_success:
 - echo "djherbis.com" > ./public/CNAME
 - "deploy.sh"
