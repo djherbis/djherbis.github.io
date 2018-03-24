@@ -6,7 +6,7 @@ baseurl = "https://djherbis.com/"
 canonifyurls = true
 title = "djherbis"
 author = "admin"
-theme = "pixyll"
+theme = "hugo-theme-pixyll"
 
 
 [indexes]
