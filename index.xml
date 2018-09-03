@@ -7,7 +7,16 @@
     <language>en-us</language>
     
     
-    <updated>Sat, 28 Mar 2015 14:48:31 -0400</updated>
+    <updated>Mon, 03 Sep 2018 14:19:00 &#43;0400</updated>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://djherbis.com/contact/</link>
+      <pubDate>Mon, 03 Sep 2018 14:19:00 &#43;0400</pubDate>
+      
+      <guid>https://djherbis.com/contact/</guid>
+      <description>Keybase djherbis Chat with me on Keybase, an end-to-end encrypted messaging platform.</description>
+    </item>
     
     <item>
       <title>#golang stream caching</title>
