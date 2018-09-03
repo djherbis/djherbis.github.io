@@ -1,0 +1,1 @@
+docker run -it --rm -p 1313:1313 -e HUGO_BASE_URL=http://dustin-disk:1313 dev.djherbis.com
