@@ -14,17 +14,10 @@ ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINA
 RUN dpkg -i /tmp/hugo.deb \
 	&& rm /tmp/hugo.deb
 
-# Expose default hugo port
-EXPOSE 1313
+# Install themes
+RUN mkdir /usr/share/themes
+WORKDIR /usr/share/themes
+RUN git clone https://github.com/azmelanar/hugo-theme-pixyll hugo-theme-pixyll
 
-# Automatically build site
-RUN mkdir /usr/share/site
+# Move to site dir
 WORKDIR /usr/share/site
-COPY djherbis.com/ .
-RUN rm -rf themes/hugo-theme-pixyll
-RUN git clone https://github.com/azmelanar/hugo-theme-pixyll themes/hugo-theme-pixyll
-ENV HUGO_BASE_URL http://localhost:1313
-RUN hugo -d public -b ${HUGO_BASE_URL}
-
-# By default, serve site
-CMD hugo server -d public -b ${HUGO_BASE_URL} --bind=0.0.0.0

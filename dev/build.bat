@@ -1,1 +1,0 @@
-docker build -t dev.djherbis.com .. -f Dockerfile

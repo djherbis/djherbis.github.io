@@ -1,0 +1,16 @@
+version: '3.2'
+volumes:
+  src:
+    driver: local
+    driver_opts:
+      device: ${SITE_DIR}
+      o: bind
+
+services:
+  djherbis.com:
+    build: dev
+    ports:
+      - ${PORT}:${PORT}
+    volumes:
+      - src:/usr/share/site
+    command: hugo server -d /usr/share/public -p $PORT -b ${HOST} --bind=0.0.0.0 --themesDir /usr/share/themes
