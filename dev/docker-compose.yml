@@ -13,4 +13,4 @@ services:
       - ${PORT}:${PORT}
     volumes:
       - src:/usr/share/site
-    command: hugo server -d /usr/share/public -p $PORT -b ${HOST} --bind=0.0.0.0 --themesDir /usr/share/themes
+    command: hugo server -d /usr/share/public -p $PORT -b ${HOST} --liveReloadPort=${EXTERNAL_PORT} --appendPort=false --bind=0.0.0.0 --themesDir /usr/share/themes
