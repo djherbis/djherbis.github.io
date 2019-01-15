@@ -1,0 +1,1 @@
+bash -c 'docker exec -it $(docker ps -a -q --filter=name=djherbisgithubio_djherbis.com) hugo new post/%1'
