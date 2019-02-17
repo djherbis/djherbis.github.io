@@ -9,6 +9,7 @@ volumes:
 services:
   djherbis.com:
     build: dev
+    container_name: "drafts.djherbis.com"
     ports:
       - ${PORT}:${PORT}
     volumes:
