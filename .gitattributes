@@ -1,0 +1,2 @@
+dev/* filter=git-crypt diff=git-crypt
+djherbis.com/content/post/freehosting.md filter=git-crypt diff=git-crypt
